@@ -1,13 +1,9 @@
 export const experience = [
-  { organization: "Zen Group", role: "Data Scientist Internship", year: "2024", focus: ["Data collection", "Web scraping", "Machine learning", "Predictive modeling", "Flask", "React"] },
-  { organization: "Tunisie Telecom", role: "Software Engineering Internship", year: "2023", focus: ["Java", "XML", "Android", "PHP", "MySQL", "JSON", "Web services"] },
+  { organization: "Valeo Enfidha", role: "Final-Year Internship - Computer Vision", year: "Feb 2025 - Jun 2025", focus: ["YOLOv8", "Data annotation", "OpenCV", "PyTorch", "Flask", "Roboflow"] },
+  { organization: "Zen Group", role: "Data Scientist Intern", year: "Jun 2024 - Jul 2024", focus: ["Predictive modeling", "Decision Tree Regression", "Gradient Boosting", "Flask", "React"] },
+  { organization: "Tunisie Telecom", role: "Android Application Development", year: "Jun 2023", focus: ["Java", "Android Studio", "XML", "SQLite"] },
 ];
-export const skills = [
-  { name: "Programming", items: ["Python", "R", "Java", "TypeScript / JavaScript"] },
-  { name: "AI & Machine Learning", items: ["Machine Learning", "Deep Learning", "NLP", "LLMs", "RAG", "Computer Vision", "CNN", "RNN", "LSTM", "GNN"] },
-  { name: "Frameworks & Libraries", items: ["PyTorch", "TensorFlow", "OpenCV", "scikit-learn", "NumPy", "Pandas"] },
-  { name: "Product Engineering", items: ["FastAPI", "Flask", "REST APIs", "React", "Next.js", "MySQL", "MongoDB", "PostgreSQL / Supabase"] },
-  { name: "Tools", items: ["Git", "Docker", "Linux", "Jupyter", "Power BI"] },
-];
-export const certifications = ["Azure Data Fundamentals", "Azure AI Fundamentals", "LPIC-1 101-500", "Introduction to Large Language Models - 365 Data Science"];
-export const activities = ["3rd place in a Machine Learning competition with GDSC ENET'Com", "GDSC activities", "Enactus", "Microsoft Tech Club", "ENET'Com FEEE 7.0 organizing", "WE-SPICE Soft Skills Days"];
+export const education = [{ school: "National School of Electronics and Telecommunications of Sfax (ENET'Com)", qualification: "Engineering Degree in Data Engineering and Decision Systems", period: "2022 - 2025" }, { school: "Preparatory Institute for Engineering Studies of Monastir", qualification: "Preparatory Degree for Engineering Studies - Rank: 288/1400 (Physics-Chemistry)", period: "2020 - 2022" }];
+export const skills = [{ name: "Languages", items: ["Python", "Java", "JavaScript", "TypeScript"] }, { name: "Machine Learning", items: ["scikit-learn", "TensorFlow", "PyTorch", "OpenCV", "NLP"] }, { name: "Generative AI", items: ["LLMs", "RAG", "Prompt Engineering"] }, { name: "Frameworks", items: ["FastAPI", "Flask", "Next.js", "React"] }, { name: "Deep Learning", items: ["CNN", "RNN", "LSTM"] }, { name: "Databases", items: ["PostgreSQL", "Supabase", "MongoDB", "MySQL", "SQLite"] }, { name: "Tools", items: ["Git", "GitHub", "Docker", "JIRA", "Agile/Scrum"] }, { name: "Systems", items: ["Windows", "Linux"] }];
+export const certifications = ["Large Language Models (LLMs) - 365 Data Science", "LPIC-1 101-500 - PAI ENET'Com", "Microsoft Azure Fundamentals", "Microsoft Azure AI Fundamentals", "Microsoft Azure Data Fundamentals"];
+export const contact = { email: "zouhourbellamine13@gmail.com", phone: "+216 29563299", linkedin: "https://www.linkedin.com/in/zouhour-bellamine-b94591252/", github: "https://github.com/zouhour13" };
