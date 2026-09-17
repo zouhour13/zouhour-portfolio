@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Footer } from "@/components/footer";
+import { ProjectArtwork } from "@/components/project-artwork";
+import { SiteHeader } from "@/components/site-header";
+import { projects } from "@/data/projects";
+export const metadata: Metadata = { title: "Work | Zouhour Bellamine", description: "Selected artificial intelligence, machine learning, computer vision, and software engineering projects by Zouhour Bellamine." };
+export default function WorkPage() { return <main><SiteHeader /><section className="mx-auto max-w-7xl px-6 pb-24 pt-16 sm:px-10 lg:px-16"><p className="eyebrow">Work</p><h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[0.98] sm:text-7xl">A record of questions, systems, and experiments.</h1><p className="mt-7 max-w-2xl text-lg leading-8 text-[#4e4b51]">A selection of projects across AI research, LLM inference, computer vision, and predictive modeling.</p><div className="mt-16 grid gap-x-8 gap-y-12 md:grid-cols-2">{projects.map((project, index) => <article className="border-t border-[#202124] pt-4" key={project.slug}><Link className="group block" href={`/work/${project.slug}`}><ProjectArtwork project={project} variant={index} /><p className="mt-5 font-mono text-xs uppercase tracking-[0.14em] text-[#6b3f81]">{project.category}</p><h2 className="mt-2 font-serif text-3xl group-hover:underline">{project.title}</h2><p className="mt-3 leading-7 text-[#4e4b51]">{project.summary}</p><span className="text-link mt-5 inline-block">View case study <span aria-hidden="true">→</span></span></Link></article>)}</div></section><Footer /></main>; }

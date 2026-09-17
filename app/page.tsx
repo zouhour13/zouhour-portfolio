@@ -1,69 +1,10 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Footer } from "@/components/footer";
+import { ProjectArtwork } from "@/components/project-artwork";
+import { SiteHeader } from "@/components/site-header";
+import { experience, skills } from "@/data/profile";
+import { featuredProjects } from "@/data/projects";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <main><section className="relative overflow-hidden border-b border-[#d9d1c5]"><div className="hero-glow pointer-events-none absolute inset-0" /><SiteHeader /><div className="relative mx-auto grid min-h-[690px] max-w-7xl items-end gap-12 px-6 pb-16 pt-20 sm:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-16 lg:pb-24"><div><p className="eyebrow">Zouhour Bellamine</p><h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[0.98] text-[#202124] sm:text-6xl lg:text-8xl">Intelligent systems, built with care.</h1><p className="mt-7 max-w-xl text-lg leading-8 text-[#4e4b51] sm:text-xl">AI Engineer and Software Engineer focused on practical machine learning, thoughtful experimentation, and scalable software.</p><div className="mt-10 flex flex-wrap gap-4"><Link className="button-primary" href="/work">View selected work</Link><a className="button-secondary" href="#contact">Get in touch</a></div></div><div className="relative mx-auto w-full max-w-md lg:justify-self-end"><div className="aspect-[4/5] border border-[#202124] bg-[#cfc5df] p-3 shadow-[10px_10px_0_#202124]"><div className="flex h-full flex-col justify-between bg-[#e8e1ee] p-6"><span className="font-mono text-xs uppercase tracking-[0.18em]">Portrait placeholder</span><div><p className="font-serif text-5xl leading-none text-[#6b3f81]">ZB</p><p className="mt-3 max-w-52 text-sm leading-6 text-[#4e4b51]">Add a professional portrait here when you are ready.</p></div></div></div><p className="absolute -bottom-10 right-0 font-mono text-xs uppercase tracking-[0.16em] text-[#6b3f81]">AI / Software / Systems</p></div></div></section><section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16" id="work"><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="eyebrow">Selected work</p><h2 className="section-title mt-4">Projects grounded in real engineering questions.</h2></div><Link className="text-link" href="/work">All projects <span aria-hidden="true">→</span></Link></div><div className="mt-12 grid gap-8 md:grid-cols-2">{featuredProjects.map((project, index) => <Link className="group block border-t border-[#202124] pt-4" href={`/work/${project.slug}`} key={project.slug}><ProjectArtwork project={project} variant={index} /><div className="mt-5 flex items-start justify-between gap-5"><div><p className="font-mono text-xs uppercase tracking-[0.14em] text-[#6b3f81]">{project.category}</p><h3 className="mt-2 font-serif text-3xl leading-tight group-hover:underline">{project.title}</h3></div><span aria-hidden="true" className="mt-1 text-xl transition-transform group-hover:translate-x-1">→</span></div><p className="mt-3 max-w-xl leading-7 text-[#4e4b51]">{project.summary}</p></Link>)}</div></section><section className="border-y border-[#d9d1c5] bg-[#202124] py-24 text-[#f7f3ed]" id="about"><div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16"><div><p className="eyebrow text-[#d9b6eb]">About</p></div><div><h2 className="font-serif text-4xl leading-tight sm:text-5xl">Exploring the space where robust software and machine intelligence meet.</h2><p className="mt-7 max-w-2xl text-lg leading-8 text-[#d9d6d1]">My work spans artificial intelligence, machine learning, deep learning, generative AI, LLMs, RAG, computer vision, and software engineering. I care about systems that are useful in practice and clear in their design.</p><Link className="button-light mt-9" href="/about">More about me</Link></div></div></section><section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16"><div className="grid gap-16 lg:grid-cols-2"><div><p className="eyebrow">Experience</p><h2 className="section-title mt-4">Learning in production contexts.</h2><div className="mt-10">{experience.map((item) => <article className="grid grid-cols-[86px_1fr] gap-5 border-t border-[#d9d1c5] py-5" key={item.organization}><p className="font-mono text-xs text-[#6b3f81]">{item.year}</p><div><h3 className="font-serif text-2xl">{item.role}</h3><p className="mt-1 font-medium">{item.organization}</p><p className="mt-3 leading-7 text-[#4e4b51]">{item.focus.join(" · ")}</p></div></article>)}</div><Link className="text-link mt-8 inline-block" href="/experience">Full experience <span aria-hidden="true">→</span></Link></div><div><p className="eyebrow">Toolkit</p><h2 className="section-title mt-4">A practical technical foundation.</h2><div className="mt-10 space-y-6">{skills.slice(0, 4).map((group) => <div className="border-t border-[#d9d1c5] pt-4" key={group.name}><h3 className="font-mono text-xs uppercase tracking-[0.14em] text-[#6b3f81]">{group.name}</h3><p className="mt-3 leading-7 text-[#4e4b51]">{group.items.join(" · ")}</p></div>)}</div></div></div></section><Footer /></main>;
 }
