@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CursorSparkles } from "@/components/cursor-sparkles";
 import { PageTransition } from "@/components/page-transition";
+import { IntroLoader } from "@/components/intro-loader";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full"><CursorSparkles /><PageTransition />{children}</body>
+      <body className="min-h-full"><IntroLoader /><CursorSparkles /><PageTransition />{children}</body>
     </html>
   );
 }

@@ -1,31 +1,12 @@
 import Link from "next/link";
+import { AnimatedHero } from "@/components/animated-hero";
 import { Footer } from "@/components/footer";
+import { Reveal } from "@/components/motion/reveal";
 import { ProjectArtwork } from "@/components/project-artwork";
 import { SiteHeader } from "@/components/site-header";
 import { experience, skills } from "@/data/profile";
 import { featuredProjects } from "@/data/projects";
 
 export default function FrenchHomePage() {
-  return (
-    <main>
-      <section className="hero-shell">
-        <SiteHeader locale="fr" />
-        <div className="hero-spark hero-spark-one" />
-        <div className="hero-spark hero-spark-two" />
-        <div className="mx-auto grid min-h-[700px] max-w-7xl items-center gap-12 px-6 pb-16 pt-12 sm:px-10 lg:grid-cols-[1.08fr_0.92fr] lg:px-16">
-          <div className="hero-copy">
-            <p className="eyebrow">Zouhour Bellamine · Monastir, Tunisie</p>
-            <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[.92] sm:text-7xl lg:text-[6.8rem]">Des idées <em>intelligentes</em>, rendues réelles avec soin.</h1>
-            <p className="mt-8 max-w-xl text-lg leading-8 text-[#674854] sm:text-xl">Ingénieure IA et ingénieure logiciel, je conçois des systèmes réfléchis en machine learning, IA générative, RAG et vision par ordinateur.</p>
-            <div className="mt-10 flex flex-wrap gap-4"><a className="button-primary" href="#work">Découvrir mes projets <span aria-hidden="true">↘</span></a><a className="button-secondary" href="#contact">Me contacter</a><a className="button-secondary" download href="/cv/zouhour-bellamine-cv-en.pdf">Télécharger le CV <span aria-hidden="true">↓</span></a></div>
-          </div>
-          <div className="hero-portrait"><div className="portrait-orbit portrait-orbit-a" /><div className="portrait-orbit portrait-orbit-b" /><div className="portrait-frame"><span className="font-mono text-xs uppercase tracking-[.15em]">Portrait à ajouter</span><div><p className="font-serif text-6xl text-[#bf4d80]">ZB</p><p className="mt-3 max-w-52 text-sm leading-6 text-[#674854]">Ajoutez <code>public/images/profile.jpg</code> lorsque vous serez prête.</p></div></div></div>
-        </div>
-      </section>
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16" id="work"><p className="eyebrow">Projets sélectionnés</p><h2 className="section-title mt-4">De grandes questions transformées en systèmes concrets.</h2><div className="work-mosaic mt-14">{featuredProjects.map((project, index) => <Link className={`work-card work-card-${index} group`} href={`/work/${project.slug}`} key={project.slug}><ProjectArtwork project={project} variant={index} /><p className="eyebrow mt-5">{project.category}</p><h3 className="mt-2 font-serif text-3xl">{project.title}</h3><p className="mt-3 leading-7 text-[#674854]">{project.summary}</p></Link>)}</div></section>
-      <section className="skills-band py-24" id="skills"><div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16"><p className="eyebrow">Compétences</p><h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight sm:text-5xl">Un socle technique entre recherche et produit.</h2><div className="mt-10 flex flex-wrap gap-2">{skills.flatMap((skill) => skill.items).map((skill) => <span className="skill-chip" key={skill}>{skill}</span>)}</div></div></section>
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16" id="experience"><p className="eyebrow">Expérience</p><h2 className="section-title mt-4">Transformer les expérimentations en pratique fiable.</h2><div className="mt-10 experience-stack">{experience.map((item, index) => <article className="experience-row" key={item.organization}><p className="font-mono text-xs text-[#bf4d80]">0{index + 1} / {item.year}</p><div><h3 className="font-serif text-2xl">{item.role}</h3><p className="mt-1 font-medium">{item.organization}</p><p className="mt-3 leading-7 text-[#674854]">{item.focus.join(" · ")}</p></div></article>)}</div></section>
-      <Footer locale="fr" />
-    </main>
-  );
+  return <main><SiteHeader locale="fr" /><AnimatedHero locale="fr" /><section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16" id="work"><Reveal><p className="eyebrow">Projets sélectionnés</p><h2 className="section-title mt-4">De grandes questions transformées en systèmes concrets.</h2></Reveal><div className="work-mosaic mt-14">{featuredProjects.map((project, index) => <Reveal delay={index * 0.08} key={project.slug}><Link className={`work-card work-card-${index} group`} href={`/work/${project.slug}`}><ProjectArtwork project={project} variant={index} /><p className="eyebrow mt-5">{project.category}</p><h3 className="mt-2 font-serif text-3xl">{project.title}</h3><p className="mt-3 leading-7 text-[#674854]">{project.summary}</p></Link></Reveal>)}</div></section><section className="skills-band py-24" id="skills"><div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16"><Reveal><p className="eyebrow">Compétences</p><h2 className="mt-4 max-w-3xl font-serif text-4xl leading-tight sm:text-5xl">Un socle technique entre recherche et produit.</h2><div className="mt-10 flex flex-wrap gap-2">{skills.flatMap((skill) => skill.items).map((skill) => <span className="skill-chip" key={skill}>{skill}</span>)}</div></Reveal></div></section><section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16" id="experience"><Reveal><p className="eyebrow">Expérience</p><h2 className="section-title mt-4">Transformer les expérimentations en pratique fiable.</h2></Reveal><div className="mt-10 experience-stack">{experience.map((item, index) => <Reveal delay={index * 0.08} key={item.organization}><article className="experience-row"><p className="font-mono text-xs text-[#bf4d80]">0{index + 1} / {item.year}</p><div><h3 className="font-serif text-2xl">{item.role}</h3><p className="mt-1 font-medium">{item.organization}</p><p className="mt-3 leading-7 text-[#674854]">{item.focus.join(" · ")}</p></div></article></Reveal>)}</div></section><Footer locale="fr" /></main>;
 }
