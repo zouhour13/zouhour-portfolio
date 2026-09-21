@@ -1,10 +1,10 @@
 export const personality = [
-  { title: "Chess", symbol: "♞", description: "A favorite way to slow down, think ahead, and enjoy a good challenge.", accent: "rose" },
-  { title: "Table tennis", symbol: "◉", description: "2nd Place - Regional Table Tennis Competition.", accent: "peach" },
-  { title: "Reading", symbol: "⌁", description: "A quiet counterpoint to technical work and a lasting source of curiosity.", accent: "lavender" },
-  { title: "Painting", symbol: "✦", description: "A playful outlet for color, composition, and imagination.", accent: "blush" },
-  { title: "Singing", symbol: "♫", description: "A little rhythm and expression away from the keyboard.", accent: "rose" },
-  { title: "Photography", symbol: "◌", description: "Collecting small visual stories through an editorial lens.", accent: "peach" },
+  { title: "Chess", symbol: "♞", description: "Thinking beyond the board.", story: "A childhood game that grew into a serious practice with Chess.com, friends, classmates, and my preparatory-school community. It taught me to recognise patterns, hold several possibilities at once, and make deliberate moves under pressure.", accent: "rose" },
+  { title: "Table tennis", symbol: "◉", description: "Consistency, focus, and competitive joy.", story: "A passion since childhood that continued through engineering school, culminating in second place at a regional competition with more than 100 participants. It is a reminder that progress is built through repeat practice.", accent: "peach" },
+  { title: "Reading", symbol: "⌁", description: "A world within worlds.", story: "I read in Arabic, French, and English, following different voices, cultures, and ways of seeing. Books offer a quiet place to explore unfamiliar perspectives and return with new questions.", accent: "lavender" },
+  { title: "Painting", symbol: "✦", description: "Creating without a predefined answer.", story: "Colour, shape, and imagination have been part of my life since childhood. Painting gives me the freedom to explore without syntax or rules, and keeps creative curiosity close to my technical work.", accent: "blush" },
+  { title: "Singing & music", symbol: "♫", description: "Another language for expression.", story: "Music is a way to communicate beyond words. At ENET'Com, I joined the creative university community at Orbeats Club Radio, collaborating around radio, music, media, and student life.", accent: "rose" },
+  { title: "Photography", symbol: "◌", description: "Preserving a feeling, moment, or story.", story: "Photography started with a habit of noticing light, people, places, and small details. Through Orbeats Club Radio at ENET'Com, that attention also became part of a collaborative media environment and its shared memories.", accent: "peach" },
 ] as const;
 
 export const imagePlaceholders = ["profile.jpg", "chess.jpg", "photography.jpg", "painting.jpg", "reading.jpg", "singing.jpg", "table-tennis.jpg"];
