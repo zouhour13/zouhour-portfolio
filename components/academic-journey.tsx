@@ -1,0 +1,29 @@
+"use client";
+
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+
+type Stage = {
+  period: string;
+  title: string;
+  lead: string;
+  school?: string;
+  detail: string;
+  learning: string;
+  visual: "science" | "reason" | "engineering" | "build" | "ai";
+  link?: { label: string; href: string };
+};
+
+const stages: Stage[] = [
+  { period: "2020-22", title: "Building a scientific foundation", lead: "Curiosity turned into a method: observation, reasoning, and experimentation.", school: "Experimental Sciences - Baccalaureate", detail: "This is where my curiosity for science began. Mathematics, physics, and experimental sciences taught me to approach a question carefully, form a hypothesis, and follow evidence.", learning: "Mathematics  /  Physics  /  Experimental sciences  /  Analytical thinking", visual: "science" },
+  { period: "2020-22", title: "Learning how to reason", lead: "A rigorous preparation for the move from scientific curiosity to engineering.", school: "Preparatory School of Monastir", detail: "Advanced mathematics and physics strengthened my problem-solving, analytical reasoning, scientific rigor, and ability to work under pressure. The entrance competition was a defining transition toward engineering.", learning: "Advanced mathematics  /  Physics  /  Problem-solving  /  Scientific rigor", visual: "reason", link: { label: "Explore the school", href: "https://www.ipeim.rnu.tn/" } },
+  { period: "2022-25", title: "Engineering the bridge", lead: "Learning to carry a mathematical idea all the way into a useful system.", school: "National School of Electronics and Telecommunications of Sfax (ENET'Com) - Data Engineering and Decision Systems (IDSD)", detail: "This engineering program connected data, decisions, and software. It gave me the foundation to transform data-driven concepts into practical products and intelligent systems.", learning: "Data engineering  →  Data management  →  Machine learning  →  Artificial intelligence  →  Decision systems  →  Software engineering", visual: "engineering", link: { label: "Visit ENET'Com", href: "https://enetcom.rnu.tn/en" } },
+  { period: "2023-25", title: "From theory to working systems", lead: "Learn, experiment, build, and solve - one practical system at a time.", detail: "Academic knowledge began to take shape through Android development, data science, machine learning, export prediction, computer vision, AI engineering, and software development. This is where concepts became projects with real constraints.", learning: "Android development  /  Data science  /  Machine learning  /  Computer vision  /  AI engineering", visual: "build" },
+  { period: "Now", title: "Going deeper into AI", lead: "The scientific foundation and engineering practice now converge in AI application development.", detail: "My current direction continues through artificial intelligence, machine learning, generative AI, large language models, retrieval-augmented generation, Azure, Linux, and the engineering of AI applications. AI Research Copilot and Spark AI are two active expressions of that direction.", learning: "AI Research Copilot  /  Spark AI  /  Generative AI  /  LLMs  /  RAG  /  Azure  /  Linux", visual: "ai" },
+];
+
+export function AcademicJourney() {
+  const [openStage, setOpenStage] = useState<number | null>(null);
+  const reduceMotion = useReducedMotion();
+  return <section aria-labelledby="academic-journey-title" className="academic-journey"><div className="academic-intro"><p className="eyebrow">Academic journey</p><h1 id="academic-journey-title">A scientific beginning. An engineering practice. An AI direction.</h1><p>Five chapters that show how curiosity became rigorous preparation, then practical systems, and now deeper work in AI.</p></div><div className="journey-thread" aria-hidden="true"><span /></div><div className="academic-stages">{stages.map((stage, index) => { const isOpen = openStage === index; return <motion.article className={`academic-stage academic-stage-${stage.visual}`} initial={{ opacity: 0, y: reduceMotion ? 0 : 32 }} key={stage.title} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} viewport={{ amount: 0.22, once: true }} whileInView={{ opacity: 1, y: 0 }}><div className="stage-marker"><span>{String(index + 1).padStart(2, "0")}</span><strong>{stage.period}</strong></div><div className="stage-visual" aria-hidden="true"><i /><i /><i /><b>{stage.visual === "reason" ? "288" : stage.visual === "engineering" ? "DATA" : stage.visual === "build" ? "BUILD" : stage.visual === "ai" ? "AI" : "∆"}</b></div><div className="stage-reading"><p className="eyebrow">{stage.period}</p><h2>{stage.title}</h2><p className="stage-lead">{stage.lead}</p><button aria-controls={`stage-detail-${index}`} aria-expanded={isOpen} className="stage-expand" onClick={() => setOpenStage(isOpen ? null : index)} type="button">{isOpen ? "Close chapter" : "Open chapter"} <span aria-hidden="true">{isOpen ? "−" : "+"}</span></button><AnimatePresence initial={false}>{isOpen && <motion.div animate={{ height: "auto", opacity: 1 }} className="stage-detail" exit={{ height: 0, opacity: 0 }} id={`stage-detail-${index}`} initial={{ height: 0, opacity: 0 }} transition={{ duration: 0.32 }}><p className="stage-school">{stage.school}</p>{stage.visual === "science" && <p className="stage-honor">Graduated with <strong>Good honors</strong></p>}{stage.visual === "reason" && <div className="competition-mark"><strong>288</strong><span>/ 1400<br /><em>Engineering School Entrance Competition</em></span></div>}<p>{stage.detail}</p><p className="stage-learning">{stage.learning}</p>{stage.link && <a className="text-link" href={stage.link.href} rel="noreferrer" target="_blank">{stage.link.label} <span aria-hidden="true">↗</span></a>}</motion.div>}</AnimatePresence></div></motion.article>; })}</div></section>;
+}
