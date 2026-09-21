@@ -16,12 +16,15 @@ const greetings = [
 const particles = ["✿", "✦", "·", "✿", "✦", "·", "✿", "✦"];
 
 export function IntroLoader() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => typeof window === "undefined" || !sessionStorage.getItem("zouhour-intro-seen"));
   const [index, setIndex] = useState(0);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (reduceMotion || sessionStorage.getItem("zouhour-intro-seen")) { setVisible(false); return; }
+    if (reduceMotion) {
+      const hideLoader = window.setTimeout(() => setVisible(false), 0);
+      return () => window.clearTimeout(hideLoader);
+    }
     const interval = window.setInterval(() => setIndex((current) => current + 1), 520);
     const finish = window.setTimeout(() => { sessionStorage.setItem("zouhour-intro-seen", "true"); setVisible(false); }, greetings.length * 520 + 420);
     return () => { window.clearInterval(interval); window.clearTimeout(finish); };
